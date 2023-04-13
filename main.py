@@ -11,11 +11,11 @@ from utils_package.functions import final_cleaning
 
 encoder_file = "./target_encoder.sav"
 tfidf_file = "./tfidf_encoder.sav"
-# model_file = "./tfidf_lightGBM.sav"
+model_file = "./tfidf_lightGBM.sav"
 
 target_encoder = joblib.load(encoder_file)
 tfidf = joblib.load(tfidf_file)
-# model = joblib.load(model_file)
+model = joblib.load(model_file)
 
 def preprocess_pipeline(question):
     question_list = []
