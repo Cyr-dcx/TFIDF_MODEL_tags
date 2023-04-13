@@ -11,11 +11,11 @@ from utils_package.functions import final_cleaning
 
 encoder_file = "./target_encoder.sav"
 tfidf_file = "./tfidf_encoder.sav"
-model_file = "./tfidf_lightGBM.sav"
+# model_file = "./tfidf_lightGBM.sav"
 
 target_encoder = joblib.load(encoder_file)
 tfidf = joblib.load(tfidf_file)
-model = joblib.load(model_file)
+# model = joblib.load(model_file)
 
 def preprocess_pipeline(question):
     question_list = []
@@ -48,11 +48,11 @@ sentence_test="I've been making Python scripts for simple tasks at work and neve
 def index():
     return {"tags": "Faisons une prédiction"}
 
-# @app.post("/predict", status_code=200)
-# def read_item(one_phrase: Phrase):
-#     question = one_phrase.phrase
-#     preprocessed_question = preprocess_pipeline(question)
-#     predictions = generate_prediction(preprocessed_question)
-#     tags = target_encoder.inverse_transform(predictions)
+@app.post("/predict", status_code=200)
+def read_item(one_phrase: Phrase):
+    question = one_phrase.phrase
+    preprocessed_question = preprocess_pipeline(question)
+    predictions = generate_prediction(preprocessed_question)
+    tags = target_encoder.inverse_transform(predictions)
 
-#     return {"tags": tags}
+    return {"tags": tags}
