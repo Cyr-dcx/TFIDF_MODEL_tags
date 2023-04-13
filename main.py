@@ -48,11 +48,11 @@ sentence_test="I've been making Python scripts for simple tasks at work and neve
 def index():
     return {"tags": "Faisons une prédiction"}
 
-@app.post("/predict", status_code=200)
-def read_item(one_phrase: Phrase):
-    question = one_phrase.phrase
-    preprocessed_question = preprocess_pipeline(question)
-    predictions = generate_prediction(preprocessed_question)
-    tags = target_encoder.inverse_transform(predictions)
+# @app.post("/predict", status_code=200)
+# def read_item(one_phrase: Phrase):
+#     question = one_phrase.phrase
+#     preprocessed_question = preprocess_pipeline(question)
+#     predictions = generate_prediction(preprocessed_question)
+#     tags = target_encoder.inverse_transform(predictions)
 
-    return {"tags": tags}
+#     return {"tags": tags}
