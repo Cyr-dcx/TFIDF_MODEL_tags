@@ -1,6 +1,7 @@
 #for preprocessing
 import re
 import nltk
+import pickle
 
 from nltk.corpus import stopwords as sw
 from nltk.stem import WordNetLemmatizer
@@ -69,4 +70,10 @@ def final_cleaning(question, token=True):
     if token == True:
         final_question = tokenize(final_question)
     return final_question
+
+def read_list(my_file_list):
+    # for reading also binary mode is important
+    with open(my_file_list, 'rb') as fp:
+        n_list = pickle.load(fp)
+        return n_list
 
